@@ -1,8 +1,10 @@
 package gui;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-public class MyFrame extends JFrame {
+public class MyFrame extends JFrame implements ActionListener  {
     //how to set a border
     //Border border=BorderFactory.createLineBorder(color,width)
     //label.setBorder(border)
@@ -24,8 +26,14 @@ public class MyFrame extends JFrame {
         return label;
 
     }
+    JButton button1;
 
     MyFrame(){
+        button1=new JButton();
+        button1.setBounds(200,600,150,50);
+        button1.setBackground(new Color(98, 145, 71));
+        button1.setText("Add yours");
+        button1.addActionListener(this);
 
         JLabel labelTitle=new JLabel();
         labelTitle.setText("My Top three best drawing");
@@ -52,6 +60,26 @@ public class MyFrame extends JFrame {
         this.add(label1);
         this.add(label2);
         this.add(labelTitle);
+        this.add(button1);
         this.setVisible(true);
     }
+    String displayed="Upload Your best Drawing";
+    JLabel display=new JLabel();
+
+
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==button1){
+
+            display.setBounds(250, 700, 300, 30); // position
+            display.setForeground(Color.BLUE);
+            display.setFont(new Font("MV Boli", Font.BOLD, 18));
+            this.add(display);
+            display.setText(displayed);
+
+        }
+
+    }
+
 }
