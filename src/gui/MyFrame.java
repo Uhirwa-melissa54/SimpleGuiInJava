@@ -29,11 +29,20 @@ public class MyFrame extends JFrame implements ActionListener  {
     JButton button1;
 
     MyFrame(){
+        ImageIcon buttonIcon=new ImageIcon(getClass().getResource("Resources/plusicon.png"));
+        Image buttonIconImage=buttonIcon.getImage();
+        Image resizedButtonIconImage=buttonIconImage.getScaledInstance(20,20,Image.SCALE_SMOOTH);
+        ImageIcon finalButtonImageIcon=new ImageIcon(resizedButtonIconImage);
+
         button1=new JButton();
         button1.setBounds(200,600,150,50);
-        button1.setBackground(new Color(98, 145, 71));
+        button1.setBackground(new Color(106, 93, 206));
         button1.setText("Add yours");
+        button1.setFont(new Font("Dialago",Font.PLAIN|Font.BOLD,14));
+        button1.setFocusable(false);
+        button1.setIcon(finalButtonImageIcon);
         button1.addActionListener(this);
+
 
         JLabel labelTitle=new JLabel();
         labelTitle.setText("My Top three best drawing");
@@ -65,18 +74,21 @@ public class MyFrame extends JFrame implements ActionListener  {
     }
     String displayed="Upload Your best Drawing";
     JLabel display=new JLabel();
+    JPanel form1=new JPanel();
+
 
 
 
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==button1){
+//
 
-            display.setBounds(250, 700, 300, 30); // position
-            display.setForeground(Color.BLUE);
-            display.setFont(new Font("MV Boli", Font.BOLD, 18));
-            this.add(display);
-            display.setText(displayed);
+//            display.setBounds(200, 700, 600, 30); // position
+//            display.setForeground(Color.BLUE);
+//            display.setFont(new Font("Dialago", Font.BOLD, 20));
+//            this.add(display);
+//            display.setText(displayed);
 
         }
 
