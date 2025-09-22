@@ -1,5 +1,6 @@
 package gui;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.*;
@@ -9,6 +10,7 @@ public class MyFrame extends JFrame implements ActionListener  {
     //Border border=BorderFactory.createLineBorder(color,width)
     //label.setBorder(border)
     //frame.pack is used to make the label just take needed widht as frame also
+
     private JLabel createImageLabel(String caption,String path,int x,int y){
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(path));
         Image image=imageIcon.getImage();
@@ -59,6 +61,7 @@ public class MyFrame extends JFrame implements ActionListener  {
 
 
 
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600,1000);
         this.setTitle("My first GUI in java");
@@ -72,9 +75,9 @@ public class MyFrame extends JFrame implements ActionListener  {
         this.add(button1);
         this.setVisible(true);
     }
-    String displayed="Upload Your best Drawing";
-    JLabel display=new JLabel();
-    JPanel form1=new JPanel();
+
+
+
 
 
 
@@ -82,7 +85,40 @@ public class MyFrame extends JFrame implements ActionListener  {
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==button1){
-//
+
+            //Create panel
+            Border bForm=BorderFactory.createLineBorder(Color.darkGray,3);
+            JPanel form1 = new JPanel();
+            form1.setLayout(null);
+            form1.setBounds(600, 0, 300, 180); // panel position on JFrame
+            form1.setBackground(new Color(200, 200, 200)); // optional, for visibility
+
+            // Add label
+            JLabel display = new JLabel("What's your best drawing?");
+            display.setForeground(Color.black);
+            display.setFont(new Font("Dialogo",Font.PLAIN,15));
+            display.setBounds(10, 10, 280, 30);
+            form1.add(display);
+
+            // Add first text field
+            JTextField field1 = new JTextField();
+            field1.setBounds(10, 50, 280, 30);
+            form1.add(field1);
+
+            // Add second text field
+            JTextField field2 = new JTextField();
+            field2.setBounds(10, 90, 280, 30);
+            form1.add(field2);
+
+            // Add upload button
+            JButton upload = new JButton("Upload");
+            upload.setBounds(30, 130, 100, 50);
+            form1.add(upload);
+
+            // Add panel to JFrame
+            this.add(form1);
+            this.revalidate();
+            this.repaint();
 
 //            display.setBounds(200, 700, 600, 30); // position
 //            display.setForeground(Color.BLUE);
