@@ -1,11 +1,10 @@
 package gui;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class MyFrame extends JFrame implements ActionListener  {
+public class MyFrame extends JFrame   {
     //how to set a border
     //Border border=BorderFactory.createLineBorder(color,width)
     //label.setBorder(border)
@@ -43,7 +42,7 @@ public class MyFrame extends JFrame implements ActionListener  {
         button1.setFont(new Font("Dialago",Font.PLAIN|Font.BOLD,14));
         button1.setFocusable(false);
         button1.setIcon(finalButtonImageIcon);
-        button1.addActionListener(this);
+
 
 
         JLabel labelTitle=new JLabel();
@@ -56,6 +55,26 @@ public class MyFrame extends JFrame implements ActionListener  {
         JLabel label=createImageLabel("The best drawing ever","Resources/picture1.jpg",150,40);
         JLabel label1=createImageLabel("The second drawing ever","Resources/picture2.jpg",0,300);
         JLabel label2=createImageLabel("The Third drawing ever","Resources/picture3.jpg",300,300);
+
+        JLabel labelTitle1=new JLabel();
+        labelTitle1.setText("Other's Opinion");
+        labelTitle1.setBounds(620,0,400,30);
+        labelTitle1.setForeground(Color.black);
+        labelTitle1.setFont(new Font("Dialago",Font.PLAIN|Font.BOLD,27));
+        labelTitle1.setVerticalTextPosition(JLabel.TOP);
+        labelTitle1.setHorizontalTextPosition(JLabel.CENTER);
+
+       ResultSet set=Read.read(Db.connect());
+       try {
+           if (set.next()) {
+               
+
+           }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+
+
 
 
 
@@ -82,7 +101,7 @@ public class MyFrame extends JFrame implements ActionListener  {
 
 
 
-    @Override
+   /* @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==button1){
 
@@ -116,9 +135,8 @@ public class MyFrame extends JFrame implements ActionListener  {
             form1.add(upload);
 
             // Add panel to JFrame
-            this.add(form1);
-            this.revalidate();
-            this.repaint();
+            this.add(form1);*/
+
 
 //            display.setBounds(200, 700, 600, 30); // position
 //            display.setForeground(Color.BLUE);
@@ -128,6 +146,6 @@ public class MyFrame extends JFrame implements ActionListener  {
 
         }
 
-    }
 
-}
+
+
