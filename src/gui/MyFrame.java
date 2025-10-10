@@ -58,17 +58,17 @@ public class MyFrame extends JFrame   {
 
         JLabel labelTitle1=new JLabel();
         labelTitle1.setText("What other think!");
-        labelTitle1.setBounds(620,0,400,30);
+        labelTitle1.setBounds(620,0,400,20);
         labelTitle1.setForeground(Color.black);
         labelTitle1.setFont(new Font("Dialago",Font.PLAIN|Font.BOLD,27));
         labelTitle1.setVerticalTextPosition(JLabel.TOP);
         labelTitle1.setHorizontalTextPosition(JLabel.CENTER);
-        JPanel panelOpinion=new JPanel(new FlowLayout());
-        panelOpinion.setBounds(620,50,700,700);
+        JPanel panelOpinion=new JPanel(new FlowLayout( FlowLayout.LEFT,10,10));
+        panelOpinion.setBounds(620,20,700,700);
 
        ResultSet set=Read.read(Db.connect());
        try {
-           if (set.next()) {
+           while (set.next()) {
                byte[] imageBytes= set.getBytes("image");
                ImageIcon imageIcon=new ImageIcon(imageBytes);
                Image image=imageIcon.getImage();
@@ -79,21 +79,14 @@ public class MyFrame extends JFrame   {
                label3.setHorizontalTextPosition(JLabel.CENTER);
                label3.setVerticalTextPosition(JLabel.BOTTOM);
                panelOpinion.add(label3);
+               System.out.println(set.getString("name"));
 
 
            }
        } catch (SQLException e) {
            e.printStackTrace();
        }
-
-
-
-
-
-
-
-
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        this.add(labelTitle1);
         this.setSize(600,1000);
         this.setTitle("My first GUI in java");
