@@ -35,13 +35,6 @@ public class MyFrame extends JFrame   {
         Image resizedButtonIconImage=buttonIconImage.getScaledInstance(20,20,Image.SCALE_SMOOTH);
         ImageIcon finalButtonImageIcon=new ImageIcon(resizedButtonIconImage);
 
-        button1=new JButton();
-        button1.setBounds(200,600,150,50);
-        button1.setBackground(new Color(106, 93, 206));
-        button1.setText("Add yours");
-        button1.setFont(new Font("Dialago",Font.PLAIN|Font.BOLD,14));
-        button1.setFocusable(false);
-        button1.setIcon(finalButtonImageIcon);
 
 
 
@@ -83,6 +76,15 @@ public class MyFrame extends JFrame   {
 
 
            }
+
+           button1=new JButton();
+           button1.setBackground(new Color(106, 93, 206));
+           button1.setText("Add yours");
+           button1.setFont(new Font("Dialago",Font.PLAIN|Font.BOLD,14));
+           button1.setFocusable(false);
+           button1.setIcon(finalButtonImageIcon);
+           panelOpinion.add(button1);
+
        } catch (SQLException e) {
            e.printStackTrace();
        }
@@ -98,7 +100,7 @@ public class MyFrame extends JFrame   {
         this.add(label2);
         this.add(labelTitle);
         this.add(panelOpinion);
-        this.add(button1);
+
         this.setVisible(true);
     }
 

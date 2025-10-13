@@ -6,9 +6,10 @@ import java.sql.SQLException;
 
 public class Db {
     public static Connection connect() {
-        String url = System.getenv("DB_URL");
+        String url = System.getenv("db_url_images");
         String username = System.getenv("db_user");
         String password = System.getenv("password");
+
 
         try {
             Connection db = DriverManager.getConnection(url, username, password);
