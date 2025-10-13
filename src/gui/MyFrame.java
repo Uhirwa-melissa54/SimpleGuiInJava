@@ -85,6 +85,35 @@ public class MyFrame extends JFrame   {
            button1.setIcon(finalButtonImageIcon);
            panelOpinion.add(button1);
 
+           button1.addActionListener(e->{
+               JPanel panelForm=new JPanel(new FlowLayout( FlowLayout.LEFT,10,10));
+               panelForm.setPreferredSize(new Dimension(500, 150));
+               JLabel labelTitle2=new JLabel("What is your best drawing?");
+               labelTitle2.setFont(new Font("Dialog", Font.BOLD, 16));
+               panelForm.add(labelTitle2);
+               JLabel name1=new JLabel("Caption of your image");
+               JTextField name1TextField=new JTextField(20);
+               panelForm.add(name1);
+               panelForm.add(name1TextField);
+               JButton selectFileButton = new JButton("Choose Image");
+               JLabel fileLabel = new JLabel("No file selected");
+
+               selectFileButton.addActionListener(ev -> {
+                   JFileChooser fileChooser = new JFileChooser();
+                   int result = fileChooser.showOpenDialog(null);
+                   if (result == JFileChooser.APPROVE_OPTION) {
+                       fileLabel.setText(fileChooser.getSelectedFile().getName());
+                   }
+               });
+
+               panelForm.add(selectFileButton);
+               panelForm.add(fileLabel);
+               panelOpinion.add(panelForm);
+
+
+
+           });
+
        } catch (SQLException e) {
            e.printStackTrace();
        }
